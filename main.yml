@@ -1,3 +1,4 @@
+```yaml
 name: Build Unsigned IPA
 
 on:
@@ -18,10 +19,15 @@ jobs:
       with:
         xcode-version: 'latest'
 
+    - name: Create basic Xcode Project Structure
+      run: |
+        swift package init --type executable
+        mkdir -p Sources/RedgifsWebView
+        mv Sources/main.swift Sources/RedgifsWebView/main.swift || true
+
     - name: Build and Archive (Unsigned)
       run: |
         xcodebuild archive \
-          -project RedgifsWebView.xcodeproj \
           -scheme RedgifsWebView \
           -destination 'generic/platform=iOS' \
           -archivePath $PWD/build/Redgifs.xcarchive \
@@ -33,7 +39,7 @@ jobs:
     - name: Generate Unsigned IPA Package
       run: |
         mkdir -p build/output/Payload
-        cp -r build/Redgifs.xcarchive/Products/Applications/ build/output/Payload/
+        cp -r build/Redgifs.xcarchive/Products/usr/local/bin/ build/output/Payload/
         cd build/output
         zip -r Redgifs-Unsigned.ipa Payload
 
