@@ -1,0 +1,42 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		1A1B1C1D1E1F1G1H1I1J1K1L /* Project object */ = {
+			isa = PBXProject;
+			attributes = { LastSwiftUpdateCheck = 1500; LastUpgradeCheck = 1500; };
+			buildConfigurationList = 1A1B1C1D1E1F1G1H1I1J1K1M /* Build configuration list for PBXProject */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			knownRegions = (en, Base);
+			mainGroup = 1A1B1C1D1E1F1G1H1I1J1K1N /* Main Group */;
+			targets = (1A1B1C1D1E1F1G1H1I1J1K1O /* RedgifsWebView */);
+		};
+		1A1B1C1D1E1F1G1H1I1J1K1O /* RedgifsWebView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A1B1C1D1E1F1G1H1I1J1K1P /* Build configuration list for PBXNativeTarget */;
+			buildPhases = (1A1B1C1D1E1F1G1H1I1J1K1Q /* Sources */);
+			buildRules = ();
+			dependencies = ();
+			name = RedgifsWebView;
+			productName = RedgifsWebView;
+			productType = "com.apple.product-type.application";
+		};
+		1A1B1C1D1E1F1G1H1I1J1K1Q /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (1A1B1C1D1E1F1G1H1I1J1K1R /* App.swift in Sources */);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A1B1C1D1E1F1G1H1I1J1K1R /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B1C1D1E1F1G1H1I1J1K1S /* App.swift */;};
+		1A1B1C1D1E1F1G1H1I1J1K1S /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>";};
+		1A1B1C1D1E1F1G1H1I1J1K1N /* Main Group */ = {isa = PBXGroup; children = (1A1B1C1D1E1F1G1H1I1J1K1S /* App.swift */); sourceTree = "<group>";};
+		1A1B1C1D1E1F1G1H1I1J1K1M /* Build configuration list for PBXProject */ = {isa = XCConfigurationList; buildConfigurations = (1A1B1C1D1E1F1G1H1I1J1K1T /* Release */); defaultConfigurationName = Release; defaultConfigurationIsVisible = 0;};
+		1A1B1C1D1E1F1G1H1I1J1K1P /* Build configuration list for PBXNativeTarget */ = {isa = XCConfigurationList; buildConfigurations = (1A1B1C1D1E1F1G1H1I1J1K1U /* Release */); defaultConfigurationName = Release; defaultConfigurationIsVisible = 0;};
+		1A1B1C1D1E1F1G1H1I1J1K1T /* Release */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)";}; name = Release;};
+		1A1B1C1D1E1F1G1H1I1J1K1U /* Release */ = {isa = XCBuildConfiguration; buildSettings = {PRODUCT_NAME = "$(TARGET_NAME)";SDKROOT = iphoneos;CODE_SIGNING_ALLOWED = NO;}; name = Release;};
+	};
+	rootObject = 1A1B1C1D1E1F1G1H1I1J1K1L /* Project object */;
+}
