@@ -1,4 +1,3 @@
-cat << 'EOF' > .github/workflows/main.yml
 name: Build Unsigned IPA
 
 on:
@@ -19,39 +18,27 @@ jobs:
       with:
         xcode-version: 'latest'
 
-    - name: Generate Lightweight Web Container
+    - name: Build and Archive (Unsigned)
       run: |
-        swift package init --type library
-        mkdir -p Sources/RedgifsApp
-        cat << 'SWIFT' > Sources/RedgifsApp/App.swift
-        import SwiftUI
-        import WebKit
+        xcodebuild archive \
+          -project RedgifsWebView.xcodeproj \
+          -scheme RedgifsWebView \
+          -destination 'generic/platform=iOS' \
+          -archivePath $PWD/build/Redgifs.xcarchive \
+          CODE_SIGNING_ALLOWED=NO \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          PROVISIONING_PROFILE_SPECIFIER=""
 
-        struct WebView: UIViewRepresentable {
-            func makeUIView(context: Context) -> WKWebView { WKWebView() }
-            func updateUIView(_ uiView: WKWebView, context: Context) {
-                if let url = URL(string: "https://www.redgifs.com") {
-                    uiView.load(URLRequest(url: url))
-                }
-            }
-        }
-        SWIFT
-
-    - name: Compile App Binary
+    - name: Generate Unsigned IPA Package
       run: |
-        swift build -c release --triple arm64-apple-ios15.0
-
-    - name: Package into IPA Layout
-      run: |
-        mkdir -p build/Payload/Redgifs.app
-        cp -r .build/plugins/ build/Payload/Redgifs.app/ 2>/dev/null || true
-        # Package into standard iOS layout structure
-        cd build
+        mkdir -p build/output/Payload
+        cp -r build/Redgifs.xcarchive/Products/Applications/ build/output/Payload/
+        cd build/output
         zip -r Redgifs-Unsigned.ipa Payload
 
     - name: Upload Finished Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Redgifs-Unsigned-IPA
-        path: build/Redgifs-Unsigned.ipa
-EOF
+        path: build/output/Redgifs-Unsigned.ipa
