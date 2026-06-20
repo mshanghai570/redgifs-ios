@@ -1,2 +1,2 @@
 # redgifs-ios
-An RedGifs app for ios!
+An RedGifs app for ios.
